@@ -2,12 +2,24 @@
 
 Vim plugin for fast opening php classes (interfaces, traits and etc.) files in projects using Composer.
 
+## How to use
+
+Add to vimrc:
+
+``` vim
+au FileType php nnoremap gf :call ComposerOpenFileUnderCursor()<CR>
+```
+
+Then, hitting `gf` in normal mode will open the class (interface or traits) under the cursor.
+
 ## Installation
+
+Plugin depends on [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
 
 ### Using [pathogen](https://github.com/tpope/vim-pathogen)
 
 ``` sh
-git clone git://github.com/arnaud-lb/vim-php-namespace.git ~/.vim/bundle/vim-php-namespace
+git clone git://github.com/voronkovich/vim-composer-open-class-file ~/.vim/bundle/vim-composer-open-class-file
 ```
 
 ### Using [vundle](https://github.com/gmarik/vundle)
