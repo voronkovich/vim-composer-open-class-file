@@ -28,6 +28,10 @@ endf
 
 fun! ComposerFindFile(class)
     " TODO: adjusting vendor directory
-    let code = '$c = require "vendor/autoload.php"; echo $c->findFile($argv[1]);'
+    let autoload_file = findfile('vendor/autoload.php', '.;')
+    if autoload_file == ''
+        throw 'File vendor/autoload.php not found!'
+    endif
+    let code = '$c = require "' . autoload_file . '"; echo $c->findFile($argv[1]);'
     return system("php -r " . shellescape(code) . ' ' . shellescape(a:class)) 
 endf
