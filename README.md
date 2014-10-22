@@ -38,7 +38,7 @@ Run command in vim:
 
 ### Manual installation
 
-Download and copy `plugin/vim-composer-open-class-file.vim` to `~/.vim/plugin/`
+Download and copy `autoload/composer/open_file.vim` to `~/.vim/autoload/composer/`
 
 ## License
 

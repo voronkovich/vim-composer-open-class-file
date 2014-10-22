@@ -1,8 +1,8 @@
 if exists('g:loaded_composer_open_file') && g:loaded_composer_open_file
     finish
 endif
-let g:loaded_composer_open_file = 1
 
+" Open file for specified name
 fun! composer#open_file#open(name)
     let fqn = composer#open_file#find_fqn(a:name)
     let file = composer#open_file#find_file(fqn)
@@ -13,6 +13,7 @@ fun! composer#open_file#open(name)
     endif
 endf
 
+" Find fully qualified name for specified name
 fun! composer#open_file#find_fqn(name)
    let fqn = PhpFindMatchingUse(a:name) 
    if fqn isnot 0
@@ -31,6 +32,7 @@ fun! composer#open_file#find_fqn(name)
    endif
 endf
 
+" Find full file path for specified name
 fun! composer#open_file#find_file(name)
     " TODO: adjusting vendor directory
     let autoload_file = findfile('vendor/autoload.php', '.;')
@@ -40,3 +42,5 @@ fun! composer#open_file#find_file(name)
     let code = '$c = require "' . autoload_file . '"; echo $c->findFile($argv[1]);'
     return system("php -r " . shellescape(code) . ' ' . shellescape(a:name)) 
 endf
+
+let g:loaded_composer_open_file = 1
