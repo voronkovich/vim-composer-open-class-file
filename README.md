@@ -7,7 +7,7 @@ Vim plugin for fast opening php classes (interfaces, traits and etc.) files in p
 Add to vimrc:
 
 ``` vim
-au FileType php nnoremap gf :call ComposerOpenFileUnderCursor()<CR>
+au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
 ```
 
 Then, hitting `gf` in normal mode will open the class (interface or traits) under the cursor.
