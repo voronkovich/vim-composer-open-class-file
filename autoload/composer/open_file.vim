@@ -4,7 +4,7 @@ endif
 
 " Open file for specified name
 fun! composer#open_file#open(name)
-    let fqn = composer#open_file#find_fqn(a:name)
+    let fqn = composer#open_file#resolve_fqn(a:name)
     let file = composer#open_file#find_file(fqn)
     if filereadable(file)
         exe ':e ' . file
@@ -14,7 +14,7 @@ fun! composer#open_file#open(name)
 endf
 
 " Find fully qualified name for specified name
-fun! composer#open_file#find_fqn(name)
+fun! composer#open_file#resolve_fqn(name)
    let fqn = PhpFindMatchingUse(a:name) 
    if fqn isnot 0
        return fqn
