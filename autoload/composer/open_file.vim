@@ -3,8 +3,13 @@ if exists('g:loaded_composer_open_file') && g:loaded_composer_open_file
 endif
 
 " Open file for specified name
-fun! composer#open_file#open(name)
-    let fqn = composer#open_file#resolve_fqn(a:name)
+fun! composer#open_file#open(...)
+    if a:0 > 0
+        let name = a:1
+    else
+        let name = composer#open_file#get_name_under_cursor()
+    endif
+    let fqn = composer#open_file#resolve_fqn(name)
     let file = composer#open_file#find_file(fqn)
     if filereadable(file)
         exe ':e ' . file
@@ -41,6 +46,15 @@ fun! composer#open_file#find_file(name)
     endif
     let code = '$c = require "' . autoload_file . '"; echo $c->findFile($argv[1]);'
     return system("php -r " . shellescape(code) . ' ' . shellescape(a:name)) 
+endf
+
+fun! composer#open_file#get_name_under_cursor()
+    let [line, start] = searchpos('\m[^[:alnum:]_\\]\|^', 'nb')
+    let [line, end] = searchpos('\m[^[:alnum:]_\\]\|$', 'n')
+    if start == 1
+       let start = 0 
+    endif
+    return strpart(getline(line('.')), start, end - start - 1)
 endf
 
 let g:loaded_composer_open_file = 1
