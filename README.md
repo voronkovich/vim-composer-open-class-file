@@ -14,8 +14,6 @@ Then, hitting `gf` in normal mode will open the class (interface or traits) unde
 
 ## Installation
 
-Plugin depends on [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
-
 ### Using [pathogen](https://github.com/tpope/vim-pathogen)
 
 ``` sh
