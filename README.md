@@ -20,18 +20,18 @@ Then, hitting `gf` in normal mode will open the class (interface or traits) unde
 git clone git://github.com/voronkovich/vim-composer-open-class-file ~/.vim/bundle/vim-composer-open-class-file
 ```
 
-### Using [vundle](https://github.com/gmarik/vundle)
+### Using [vundle](https://github.com/VundleVim/Vundle.vim)
 
 Add to vimrc:
 
 ``` vim
-Bundle 'voronkovich/vim-composer-open-class-file'
+Plugin 'voronkovich/vim-composer-open-class-file'
 ```
 
 Run command in vim:
 
 ``` vim
-:BundleInstall
+:PluginInstall
 ```
 
 ### Manual installation
